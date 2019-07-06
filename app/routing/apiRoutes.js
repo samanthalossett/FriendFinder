@@ -53,10 +53,10 @@ module.exports = function (app) {
         }
         console.log(totalDifference + " Total Difference ");
         }
-        console.log(" Best match thing" + bestMatch);
+        // console.log(" Best match thing" + bestMatch);
         friends.push(userData);
-        // console.log("New User Added");
-        // console.log(userData);
+        console.log("New User Added");
+        console.log(userData);
         res.json(bestMatch);
 
     });
