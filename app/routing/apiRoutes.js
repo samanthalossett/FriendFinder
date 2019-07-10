@@ -25,35 +25,32 @@ module.exports = function (app) {
             photo: req.body.photo,
             scores: map
         };
-        console.log("Name: " + userName);
-        console.log("User Score: " + userScores);
+        console.log("Name of new User: " + userName);
+        console.log("User Scores: " + userScores);
 
         var b = map.reduce((a, map) => a + map, 0);
-        console.log("b of user score " + b);
-        console.log("Best match friend diff " + bestMatch.friendDifference);
+        console.log("Total score of new user: " + b);
         console.log("-------------------------------");
 
         //for loop to loop through our database of possible matches (GOT characters)//
         for (var i=0; i< friends.length; i++){
-            console.log(friends[i].name);
+            console.log("Name of possible GOT Best Friend: " + friends[i].name);
             totalDifference= 0;
-            console.log("Total Diff " + totalDifference);
-            console.log("Best match friend diff " + bestMatch.friendDifference);
 
 
         var bfriendScore= friends[i].scores.reduce((a, b) => a + b, 0);
-        console.log("Total friend Score " + bfriendScore);
+        console.log("Total friend Score: " + bfriendScore);
         totalDifference += Math.abs(b - bfriendScore);
-        console.log("-------------------------------" + totalDifference);
+        console.log("-------------------------------");
 
         if(totalDifference <= bestMatch.friendDifference){
             bestMatch.name = friends[i].name;
             bestMatch.photo = friends[i].photo;
             bestMatch.friendDifference= totalDifference;
         }
-        console.log(totalDifference + " Total Difference ");
+        console.log("Total Difference between the two peoples scores: " + totalDifference);
         }
-        // console.log(" Best match thing" + bestMatch);
+        console.log(" Best match for: " + userName + " : " + bestMatch.name);
         friends.push(userData);
         console.log("New User Added");
         console.log(userData);
@@ -61,6 +58,3 @@ module.exports = function (app) {
 
     });
 };
-
-
-
