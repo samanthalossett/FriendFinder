@@ -6,7 +6,7 @@ var bodyparser= require("body-parser");
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 //use the parser thing to extract data from the body//
 app.use(bodyparser.json());
